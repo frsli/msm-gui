@@ -4,6 +4,61 @@
 
 <hr>
 
+<form action="/movies/create_movie" method="post">
+  <div>
+    <label for="form_title">
+      Title
+    </label>
+
+    <input id="form_title" name="form_title">
+  </div>
+
+  <div>
+    <label for="form_year">
+      Year
+    </label>
+
+    <input id="form_year" name="form_year">
+  </div>
+
+  <div>
+    <label for="form_duration">
+      Duration
+    </label>
+
+    <input id="form_duration" name="form_duration">
+  </div>
+
+  <div>
+    <label for="form_description">
+      Description
+    </label>
+
+    <textarea id="form_description" name="form_description" row "3"> </textarea>
+  </div>
+
+    <div>
+    <label for="form_image">
+      Image
+    </label>
+
+    <input id="form_image" name="form_image">
+  </div>
+
+  <div>
+    <label for="form_director_id">
+      Director ID
+    </label>
+
+    <input id="form_director_id" name="form_director_id">
+  </div>
+
+  <button>Create movie</button>
+
+</form>  
+
+<hr>
+
 <table border="1">
   <tr>
     <th>
@@ -52,8 +107,11 @@
       <% matching_directors = Director.where({ :id => a_movie.director_id }) %>
       
       <% the_director = matching_directors.at(0) %>
-
+      <% if the_director == nil %>
+        Uh oh! We weren't able to find a director for this movie.
+      <% else %>
       <%= the_director.name %>
+      <% end %>
     </td>
 
     <td>

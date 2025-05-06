@@ -6,6 +6,50 @@
   Go back
 </a>
 
+<div>
+  <a href="/delete_actor/<%= @the_actor.id %>">
+    Delete director
+  </a>
+</div>
+<hr>
+
+<form action="/actors/update_actor/<%= @the_actor.id %>" method="post">
+  <div>
+    <label for="form_name">
+      Name
+    </label>
+
+    <input id="form_name" name="form_name" value="<%= @the_actor.name %>">
+  </div>
+
+  <div>
+    <label for="form_dob">
+      Dob
+    </label>
+
+    <input type="date" id="form_dob" name="form_dob" value="<%= @the_actor.dob%>">
+  </div>
+
+  <div>
+    <label for="form_bio">
+      Bio
+    </label>
+
+    <input id="form_bio" name="form_bio" value="<%= @the_actor.bio %>">
+  </div>
+
+  <div>
+    <label for="form_image">
+      Image
+    </label>
+
+    <input id="form_image" name="form_image" value="<%= @the_actor.image %>">
+  </div>
+
+  <button>Update actor</button>
+
+</form>  
+
 <hr>
 
 <dl>
@@ -82,6 +126,7 @@
 
   <% matching_characters = Character.where({ :actor_id => a_id }) %>
 
+
   <% matching_characters.each do |a_character| %>
     <% m_id = a_character.movie_id %>
 
@@ -118,5 +163,6 @@
         </a>
       </td>
     </tr>
+
   <% end %>
 </table>

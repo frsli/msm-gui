@@ -2,9 +2,73 @@
   Movie #<%= @the_movie.id %> details
 </h1>
 
-<a href="/movies">
-  Go back
-</a>
+<div>
+  <a href="/movies">
+    Go back
+  </a>
+</div>
+
+<div>
+  <a href="/delete_movie/<%= @the_movie.id %>">
+    Delete movie
+  </a>
+</div>
+
+<hr>
+
+
+<form action="/movies/update_movie/<%= @the_movie.id %>" method="post">
+  <div>
+    <label for="form_title">
+      Title
+    </label>
+
+    <input id="form_title" name="form_title" value = "<%= @the_movie.title%>">
+  </div>
+
+  <div>
+    <label for="form_year">
+      Year
+    </label>
+
+    <input id="form_year" name="form_year" value = "<%= @the_movie.year%>">
+  </div>
+
+  <div>
+    <label for="form_duration">
+      Duration
+    </label>
+
+    <input id="form_duration" name="form_duration" value = "<%= @the_movie.duration%>">
+  </div>
+
+  <div>
+    <label for="form_description">
+      Description
+    </label>
+
+    <input id="form_description" name="form_description" value = "<%= @the_movie.description%>">
+  </div>
+
+  <div>
+    <label for="form_image">
+      Image
+    </label>
+
+    <input id="form_image" name="form_image" value = "<%= @the_movie.image%>">
+  </div>
+
+  <div>
+    <label for="form_director_id">
+      Director ID
+    </label>
+
+    <input id="form_director_id" name="form_director_id" value = "<%= @the_movie.director_id%>">
+  </div>
+
+  <button>Update movie</button>
+
+</form>  
 
 <hr>
 
@@ -53,8 +117,12 @@
     <% matching_directors = Director.where({ :id => dir_id }) %>
     
     <% the_director = matching_directors.at(0) %>
-
+    <% if%>
+    <% the_director == nil %>
+    Uh oh! We weren't able to find a director for this movie.
+    <% else%>
     <%= the_director.name %>
+    <% end%>
   </dd>
 
   <dt>
